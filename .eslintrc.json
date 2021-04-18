@@ -1,0 +1,90 @@
+{
+  "root": true,
+  // 適用する環境
+  "env": {
+    "es6": true,
+    "node": true,
+    "browser": true,
+    "commonjs": true
+  },
+  // パーサー
+  "parser": "@typescript-eslint/parser",
+  // jsx を使います
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    // import 文でモジュールを使用します
+    "sourceType": "module"
+  },
+  // React のバージョンは自動検出に
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/resolver": {
+      "node": {
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".json",
+          ".ts",
+          ".tsx"
+        ]
+      }
+    }
+  },
+  "ignorePatterns": ["build","node_modules"],
+  "plugins": ["react-hooks", "react", "@typescript-eslint"],
+  // 基本的にルールは recommended に従う
+  // prettier は配列の最後尾に書く
+  "extends": [
+    "airbnb",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "rules": {
+    "no-use-before-define": "off",
+    "react/prop-types": "off",
+    "react/jsx-filename-extension": [
+      "error",
+      { 
+        "extensions": [".jsx", ".tsx"] 
+      }
+    ],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "semi": ["error", "always"],
+        "semi-spacing": ["error", {"after": true, "before": false}],
+        "semi-style": ["error", "last"],
+        "no-extra-semi": "error",
+        "no-unexpected-multiline": "error",
+        "no-unreachable": "error",
+    "comma-dangle":["error", {
+      "arrays": "always-multiline",
+      "objects": "always-multiline",
+      "imports": "always-multiline",
+      "exports": "always-multiline",
+      "functions": "never"
+    }],
+    "no-trailing-spaces": ["error", {
+      "skipBlankLines": false 
+    }],
+    "no-mixed-spaces-and-tabs": ["error", "smart-tabs"],
+    "no-multiple-empty-lines": ["error", { "max": 2, "maxEOF": 0 }],
+    "linebreak-style": ["error", "unix"],
+    "react/jsx-props-no-spreading": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off"
+  }
+}

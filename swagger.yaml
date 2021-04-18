@@ -1,0 +1,105 @@
+swagger: "3.0"
+info:
+  description: "This is API of Express-TSNode-React project."
+  version: "0.1.0"
+  title: "Express-TSNode-React API"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "apiteam@example.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+paths:
+  /search/:
+    get:
+      summary: "配列を返す API"
+      description: "テスト用に配列を返す"
+      parameters:
+      - name: "key"
+        in: "query"
+        description: "配列をフィルタするためのデータ"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "成功時のレスポンス"
+          schema:
+            type: "array"
+            items:
+              type: "object"
+              properties:
+                id:
+                  type: "integer"
+                  format: "int32"
+                data:
+                  type: "string"
+                  example: "data1"
+              example:
+                - id: 1
+                  data: "data1"
+                - id: 2
+                  data: "data2"
+          examples:
+            application/json: # Mockサーバのレスポンスになるためフロントエンド開発者も編集する
+              id: 1
+              data: "label"
+
+  /page1/{id}:
+    get:
+      summary: "Search Page1Data API"
+      description: "Page1Dataを取得する"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "取得したいデータのid"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "成功時のレスポンス"
+          schema:
+            $ref: "#/definitions/Page"
+  /page2/{id}:
+    get:
+      summary: "Search Page1Data API"
+      description: "Page2Dataを取得する"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "取得したいデータのid"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "成功時のレスポンス"
+          schema:
+            $ref: "#/definitions/Page" 
+definitions:
+  Page:
+    type: "string"
+    properties: 
+      select_id1:
+        type: "integer"
+        format: "int32"
+      select_id2:
+        type: "integer"
+        format: "int32"
+      select_id3:
+        type: "integer"
+        format: "int32"
+      select_id4:
+        type: "integer"
+        format: "int32"
+      text_id3:
+        type: "string"
+        example: "data1"
+      text_id4:
+        type: "string"
+        example: "data2"
+    example:
+      select_id1: 0
+      select_id2: 1
+      select_id3: 2
+      select_id4: 0
+      text_id3: "text_id3"
+      text_id4: "text_id4"
