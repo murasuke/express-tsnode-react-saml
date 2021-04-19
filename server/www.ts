@@ -26,6 +26,8 @@ const samlStrategy = new Strategy(
   {
     // URL that goes from the Identity Provider -> Service Provider
     callbackUrl: process.env.CALLBACK_URL,
+    // path: '/login/callback',
+    // host: 'http://localhost:4000',
     // URL that goes from the Service Provider -> Identity Provider
     entryPoint: process.env.ENTRY_POINT,
     // Usually specified as `/shibboleth` from site root
@@ -59,19 +61,16 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // ----------------------------------------------------------------------
+
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
+    console.log(`Authenticated:${req.user}`);
     return next();
   }
+  console.log(`Not authenticated. Redirect to /login:${req.user}`);
   return res.redirect('/login');
 }
 
-app.get('/',
-  ensureAuthenticated,
-  (req, res) => {
-    res.send('Authenticated');
-  }
-);
 
 app.get('/login',
   passport.authenticate('saml', { failureRedirect: '/login/fail' }),
@@ -82,7 +81,8 @@ app.get('/login',
 
 app.post('/login/callback',
    passport.authenticate('saml', { failureRedirect: '/login/fail' }),
-  (req, res) => {
+  (req: any, res) => {
+    console.log('/login/callback', req.user);
     res.redirect('/');
   }
 );
@@ -99,6 +99,23 @@ app.get('/Shibboleth.sso/Metadata',
     res.status(200).send(samlStrategy.generateServiceProviderMetadata(fs.readFileSync(path.join(__dirname, 'sp-public-cert.pem'), 'utf8')));
   }
 );
+
+app.get('/logout', (req: any, res) => {
+  req.logout();
+  // TODO: invalidate session on IP
+  res.redirect('/');
+});
+
+app.all('*', (req: any, res, next) => {
+  if (req.isAuthenticated()) {
+    console.log(`Authenticated:${JSON.stringify(req.user)}`);
+    return next();
+  }
+
+  console.log(`${req.url} Not authenticated. Redirect to /login`);
+  return res.redirect('/login');
+});
+
 // ----------------------------------------------------------------------
 
 app.use(express.static(path.join(__dirname, '../build')));

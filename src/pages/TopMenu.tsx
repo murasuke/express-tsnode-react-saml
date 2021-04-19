@@ -36,8 +36,8 @@ const TopMenu: React.FC = () => {
             <SearchResultList results={searchResult} />
           </div>
           <div>
-            <p><Link to="/Page1"><button type="button">Page1</button></Link> サンプル１：関数コンポーネント＋Hookでフォーム入力データをPostするサンプル</p>
-            <p><Link to="/Page2"><button type="button">Page2</button></Link> サンプル２：上記に加え、useContextでデータ保持してPost(Reduxは未使用)</p>
+            <p><Link to="/page1"><button type="button">Page1</button></Link> サンプル１：関数コンポーネント＋Hookでフォーム入力データをPostするサンプル</p>
+            <p><Link to="/page2"><button type="button">Page2</button></Link> サンプル２：上記に加え、useContextでデータ保持してPost(Reduxは未使用)</p>
           </div>
         </div>
       </>
