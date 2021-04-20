@@ -29,7 +29,7 @@ const Page2: React.FC = ()=>
  */
 const Page2Form: React.FC = ()=> {
   const { state } = useContext(Page2Context);
-  const { dispatch: siteDispatch } = useContext(SiteContext);
+  const { siteDispatch } = useContext(SiteContext);
   useEffect( () => {
     siteDispatch({ type: 'CHANGE_PAGE_NAME', pageName: 'Page2' });
   },[]);

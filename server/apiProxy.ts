@@ -5,7 +5,6 @@ import appConfig from '../src/confg';
 const router = express.Router();
 
 router.all('*', async(req, res) => {
-
   try{
     const config: AxiosRequestConfig = {
       method: req.method as Method,

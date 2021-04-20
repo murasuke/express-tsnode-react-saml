@@ -9,7 +9,7 @@ const TopMenu: React.FC = () => {
     const [inputVal, setInputVal] = useState('');
     const [searchResult, setSearchResult] = useState<any[]>([]);
 
-    const { dispatch: siteDispatch } = useContext(SiteContext);
+    const { siteDispatch } = useContext(SiteContext);
     useEffect( () => {
       siteDispatch({ type: 'CHANGE_PAGE_NAME', pageName: 'TopPage' });
     },[]);

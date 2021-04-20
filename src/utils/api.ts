@@ -10,6 +10,9 @@ async function request<T = any>( path: string, config={} ){
     return response.data;
 }
 
+export async function getLoginUser(){
+    return request(`/userInfo`);
+}
 
 export async function getSearchResults(arg: any = {}){
     return request(`${SVC}/search?key=${arg.key}`);
