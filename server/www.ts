@@ -16,7 +16,7 @@ app.disable('x-powered-by');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // samlによる認証処理
@@ -32,7 +32,7 @@ app.get('/up', (req, res) => res.send('up'));
 app.use(`/${SERVICE_NAME}`, appProxy);
 
 // reactのコンパイル済みモジュールを返す
-app.use(express.static(path.join(__dirname, '../build')));
+app.use(express.static(path.join(__dirname, '../build'), { index: false }));
 // トップページ以外の各ページを直接アクセスした場合に開けるようにindex.htmlを返す(react-router用)
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, '../build', 'index.html'));

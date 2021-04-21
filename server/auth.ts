@@ -85,7 +85,12 @@ router.all(['/', '/*'], (req: any, res, next) => {
     return next();
   }
 
+  if (req.url === '/up') {
+    return next();
+  }
+
   console.log(`${req.url} Not authenticated. Redirect to /login`);
+  // return authModule(req, res, next);
   return res.redirect('/login');
 });
 
