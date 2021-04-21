@@ -1,3 +1,7 @@
+/**
+ * 環境変数必須チェック
+ * ・チェック後、appConfigに値をセットする(適切に構造化して返す)
+ */
 import dotenv from 'dotenv';
 
 dotenv.config();

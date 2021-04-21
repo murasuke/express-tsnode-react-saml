@@ -6,6 +6,7 @@ import { SiteContext } from '../../utils/SiteContext';
 import { postPage2 } from '../../utils/api';
 
 /**
+ * useContextフックを使うことで、入力値を子コンポーネントと共有するサンプル
  * ・フォーム全体の入力値(inputData)は、Page1が保持する。
  * ・useContextフックを使うことで、propsにコールバックを引き渡す必要はない。
  * ・ページとコンポーネントの階層が深くなる場合でも複雑化しない。

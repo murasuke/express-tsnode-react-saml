@@ -4,6 +4,10 @@ import appConfig from '../src/confg';
 
 const router = express.Router();
 
+/**
+ * API側処理へのプロキシ
+ * 「/${SERVICE_NAME}/～」に対するアクセスは、appProxy経由でバックエンドに転送する
+ */
 router.all('*', async(req, res) => {
   try{
     const config: AxiosRequestConfig = {

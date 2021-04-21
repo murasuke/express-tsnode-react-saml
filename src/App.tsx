@@ -13,7 +13,6 @@ const App: React.FC = () => {
   useEffect( () => {
     const asyncFnc = async () => {
       const user = await getLoginUser();
-      alert(user);
       siteDispatch({ type: 'CHANGE_USER', userId: user.uid, userName: user.nameID });
     };
 

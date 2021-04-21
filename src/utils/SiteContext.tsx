@@ -1,9 +1,11 @@
 import React, { useReducer } from 'react';
 
+// reducerで適切に型推論できるようにするため、Union型でActionを定義する
 export type Action =
   { type: 'CHANGE_PAGE_NAME', pageName: string } |
   { type: 'CHANGE_USER', userName: string, userId: string};
 
+// サイト全体で共有する型
 export type SiteContextDataType = {
   pageName: string,
   userId: string,
