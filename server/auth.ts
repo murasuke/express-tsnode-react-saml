@@ -30,7 +30,7 @@ const samlStrategy = new Strategy(
     entryPoint: process.env.ENTRY_POINT,
     // Usually specified as `/shibboleth` from site root
     issuer: process.env.ISSUER,
-    identifierFormat: null,
+    identifierFormat: undefined,
 
     // Identity Providerのサーバ証明書
     cert: fs.readFileSync('idp-public-cert.pem', 'utf8'),

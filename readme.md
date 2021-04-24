@@ -43,6 +43,7 @@ Email Address []:tkyk.niimura@gmail.com
 
 ```
 ### コマンドラインからidxサーバを起動するため、package.jsonにスクリプトを追加
+
 ```
   "saml-idp": "saml-idp --acs http://localhost:7000/auth/saml --aud mock-audience"
 ```
@@ -143,28 +144,3 @@ npx install-peerdeps --dev eslint-config-airbnb --yarn
   * mockサーバとして利用できるようにする ⇒ yamlに書いたサンプルをそのまま返してくれるmockがない ⇒ 保留
   * npm scriptとして追加する ⇒ 保留
 
--------
-* pemファイル作成方法(idp用)
-```
-$ openssl req -x509 -new -newkey rsa:2048 -nodes  -keyout idp-private-key.pem -out idp-public-cert.pem -days 7300
-Generating a RSA private key
-.....+++++
-......+++++
-writing new private key to 'idp-private-key.pem'
------
-You are about to be asked to enter information that will be incorporated
-into your certificate request.
-What you are about to enter is what is called a Distinguished Name or a DN.
-There are quite a few fields but you can leave some blank
-For some fields there will be a default value,
-If you enter '.', the field will be left blank.
------
-Country Name (2 letter code) [AU]:JP
-State or Province Name (full name) [Some-State]:Aichi
-Locality Name (eg, city) []:Oobu
-Organization Name (eg, company) [Internet Widgits Pty Ltd]:
-Organizational Unit Name (eg, section) []:
-Common Name (e.g. server FQDN or YOUR name) []:Test Identity Provider
-Email Address []:tkyk.niimura@gmail.com
-
-```
