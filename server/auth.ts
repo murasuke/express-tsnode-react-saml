@@ -74,7 +74,7 @@ router.get('/login/fail', (req, res) => {
 /**
  * SPメタデータを返す
  */
-router.get('/Shibboleth.sso/Metadata', (req, res) => {
+router.get('/Metadata', (req, res) => {
   res.type('application/xml');
   const spCert = fs.readFileSync(path.join(__dirname, 'sp-public-cert.pem'), 'utf8');
   res.status(200).send(samlStrategy.generateServiceProviderMetadata(spCert));
